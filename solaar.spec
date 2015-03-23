@@ -16,7 +16,7 @@ Requires:	python-pyudev
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Solaar is a Linux device manager for Logitech’s Unifying Receiver
+Solaar is a Linux device manager for Logitech's Unifying Receiver
 peripherals. It is able to pair/unpair devices to the receiver, and
 for most devices read battery status.
 
