@@ -1,7 +1,7 @@
 Summary:	Linux devices manager for the Logitech Unifying Receiver
 Name:		solaar
 Version:	1.0.6
-Release:	1
+Release:	2
 License:	GPL v2
 Group:		Applications/System
 Source0:	https://github.com/pwr/Solaar/archive/%{version}/%{name}-%{version}.tar.gz
@@ -39,24 +39,21 @@ device, and also pair/unpair supported devices with the receiver.
 %setup -q -n Solaar-%{version}
 
 %build
-%{__python3} setup.py build
+%py3_build
+
 cd tools
 sh po-compile.sh
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT/lib/udev/rules.d
 
-%{__python3} setup.py \
-	install --skip-build \
-	--optimize=2 \
-	--root=$RPM_BUILD_ROOT
-%{__mv} $RPM_BUILD_ROOT%{_prefix}/local/* $RPM_BUILD_ROOT%{_prefix}/
-%{__rm} -r $RPM_BUILD_ROOT%{_prefix}/local
-cd $RPM_BUILD_ROOT%{_bindir}
-ln -s %{name} %{name}-cli
-install -d 0755 $RPM_BUILD_ROOT/lib/udev/rules.d
-%{__cp} $RPM_BUILD_ROOT%{_datadir}/solaar/udev-rules.d/42-logitech-unify-permissions.rules $RPM_BUILD_ROOT/lib/udev/rules.d/
+%py3_install
+
+ln -sr $RPM_BUILD_ROOT%{_bindir}/{%{name},%{name}-cli}
+
+%{__mv} $RPM_BUILD_ROOT%{_datadir}/solaar/udev-rules.d/42-logitech-unify-permissions.rules $RPM_BUILD_ROOT/lib/udev/rules.d/
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/solaar/udev-rules.d
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -76,27 +73,27 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog docs/*
 %attr(755,root,root) %{_bindir}/solaar
 %attr(755,root,root) %{_bindir}/solaar-cli
-%dir %{py3_sitedir}/hidapi
-%{py3_sitedir}/hidapi/*.py
-%dir %{py3_sitedir}/hidapi/__pycache__
-%{py3_sitedir}/hidapi/__pycache__/*.pyc
-%dir %{py3_sitedir}/logitech_receiver
-%{py3_sitedir}/logitech_receiver/*.py
-%dir %{py3_sitedir}/logitech_receiver/__pycache__
-%{py3_sitedir}/logitech_receiver/__pycache__/*.pyc
-%dir %{py3_sitedir}/solaar
-%{py3_sitedir}/solaar/*.py
-%dir %{py3_sitedir}/solaar/__pycache__
-%{py3_sitedir}/solaar/__pycache__/*.pyc
-%dir %{py3_sitedir}/solaar/cli
-%{py3_sitedir}/solaar/cli/*.py
-%dir %{py3_sitedir}/solaar/cli/__pycache__
-%{py3_sitedir}/solaar/cli/__pycache__/*.pyc
-%dir %{py3_sitedir}/solaar/ui
-%{py3_sitedir}/solaar/ui/*.py
-%dir %{py3_sitedir}/solaar/ui/__pycache__
-%{py3_sitedir}/solaar/ui/__pycache__/*.pyc
-%{py3_sitedir}/solaar-%{version}-py%{py3_ver}.egg-info
+%dir %{py3_sitescriptdir}/hidapi
+%{py3_sitescriptdir}/hidapi/*.py
+%dir %{py3_sitescriptdir}/hidapi/__pycache__
+%{py3_sitescriptdir}/hidapi/__pycache__/*.pyc
+%dir %{py3_sitescriptdir}/logitech_receiver
+%{py3_sitescriptdir}/logitech_receiver/*.py
+%dir %{py3_sitescriptdir}/logitech_receiver/__pycache__
+%{py3_sitescriptdir}/logitech_receiver/__pycache__/*.pyc
+%dir %{py3_sitescriptdir}/solaar
+%{py3_sitescriptdir}/solaar/*.py
+%dir %{py3_sitescriptdir}/solaar/__pycache__
+%{py3_sitescriptdir}/solaar/__pycache__/*.pyc
+%dir %{py3_sitescriptdir}/solaar/cli
+%{py3_sitescriptdir}/solaar/cli/*.py
+%dir %{py3_sitescriptdir}/solaar/cli/__pycache__
+%{py3_sitescriptdir}/solaar/cli/__pycache__/*.pyc
+%dir %{py3_sitescriptdir}/solaar/ui
+%{py3_sitescriptdir}/solaar/ui/*.py
+%dir %{py3_sitescriptdir}/solaar/ui/__pycache__
+%{py3_sitescriptdir}/solaar/ui/__pycache__/*.pyc
+%{py3_sitescriptdir}/solaar-%{version}-py%{py3_ver}.egg-info
 %{_datadir}/%{name}
 %{_desktopdir}/solaar.desktop
 %{_iconsdir}/hicolor/scalable/apps/solaar.svg
