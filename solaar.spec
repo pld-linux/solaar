@@ -1,4 +1,5 @@
 Summary:	Linux devices manager for the Logitech Unifying Receiver
+Summary(pl.UTF-8):	Linuksowy menedżer urządzeń dedykowany zunifikowanym odbiornikom firmy Logitech
 Name:		solaar
 Version:	1.0.6
 Release:	3
@@ -34,6 +35,17 @@ for most devices read battery status.
 It comes in two flavors, command-line and GUI. Both are able to list
 the devices paired to a Unifying Receiver, show detailed info for each
 device, and also pair/unpair supported devices with the receiver.
+
+%description -l pl.UTF-8
+Solarar to menedżer urządzeń dla systemu Linux dla urządzeń
+peryferyjnych będących zunifikowanymi odbiornikami firmy Logitech.
+Solaar Jest w stanie sparować/rozparować urządzenia z odbiornikiem, a
+dla większości urządzeń również odczytać stan baterii.
+
+Występuje w dwóch wersjach: wiersza poleceń i GUI. Oba są w stanie
+wyświetlić listę urządzeń sparowanych z odbiornikiem, wyświetlić
+szczegółowe informacje o każdym urządzeniu, a także
+sparować/rozparować obsługiwane urządzenia z odbiornikiem.
 
 %prep
 %setup -q -n Solaar-%{version}
