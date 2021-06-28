@@ -1,7 +1,7 @@
 Summary:	Linux devices manager for the Logitech Unifying Receiver
 Name:		solaar
 Version:	1.0.6
-Release:	2
+Release:	3
 License:	GPL v2
 Group:		Applications/System
 Source0:	https://github.com/pwr/Solaar/archive/%{version}/%{name}-%{version}.tar.gz
@@ -40,20 +40,20 @@ device, and also pair/unpair supported devices with the receiver.
 
 %build
 %py3_build
-
-cd tools
-sh po-compile.sh
+sh tools/po-compile.sh
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/lib/udev/rules.d
+%{__sed} -i '1s,%{_bindir}/env python3,%{__python3},' tools/hidconsole
 
 %py3_install
 
 ln -sr $RPM_BUILD_ROOT%{_bindir}/{%{name},%{name}-cli}
-
+install -pm755 tools/hidconsole $RPM_BUILD_ROOT%{_bindir}
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/solaar/udev-rules.d/42-logitech-unify-permissions.rules $RPM_BUILD_ROOT/lib/udev/rules.d/
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/solaar/udev-rules.d
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -68,9 +68,10 @@ rm -rf $RPM_BUILD_ROOT
 %postun
 %update_icon_cache hicolor
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %doc ChangeLog docs/*
+%attr(755,root,root) %{_bindir}/hidconsole
 %attr(755,root,root) %{_bindir}/solaar
 %attr(755,root,root) %{_bindir}/solaar-cli
 %dir %{py3_sitescriptdir}/hidapi
@@ -98,5 +99,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/solaar.desktop
 %{_iconsdir}/hicolor/scalable/apps/solaar.svg
 %{_datadir}/metainfo/io.github.pwr_solaar.solaar.metainfo.xml
-%{_localedir}/*/LC_MESSAGES/%{name}.mo
 /lib/udev/rules.d/42-logitech-unify-permissions.rules
