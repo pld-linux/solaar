@@ -56,6 +56,7 @@ sh tools/po-compile.sh
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT/etc/xdg/autostart/
 install -d $RPM_BUILD_ROOT/lib/udev/rules.d
 %{__sed} -i '1s,%{_bindir}/env python3,%{__python3},' tools/hidconsole
 
@@ -63,6 +64,7 @@ install -d $RPM_BUILD_ROOT/lib/udev/rules.d
 
 ln -sr $RPM_BUILD_ROOT%{_bindir}/{%{name},%{name}-cli}
 install -pm755 tools/hidconsole $RPM_BUILD_ROOT%{_bindir}
+install -pm644 share/autostart/solaar.desktop $RPM_BUILD_ROOT/etc/xdg/autostart/
 %{__mv} $RPM_BUILD_ROOT%{_datadir}/solaar/udev-rules.d/42-logitech-unify-permissions.rules $RPM_BUILD_ROOT/lib/udev/rules.d/
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/solaar/udev-rules.d
 %find_lang %{name}
@@ -86,6 +88,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/hidconsole
 %attr(755,root,root) %{_bindir}/solaar
 %attr(755,root,root) %{_bindir}/solaar-cli
+/etc/xdg/autostart/solaar.desktop
 %dir %{py3_sitescriptdir}/hidapi
 %{py3_sitescriptdir}/hidapi/*.py
 %dir %{py3_sitescriptdir}/hidapi/__pycache__
