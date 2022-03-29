@@ -7,7 +7,7 @@ License:	GPL v2
 Group:		Applications/System
 Source0:	https://github.com/pwr-Solaar/Solaar/archive/refs/tags/%{version}.tar.gz
 # Source0-md5:	342ede13718ad8b8a7e0c5ff97a7a9ef
-URL:		http://pwr.github.io/Solaar/
+URL:		https://pwr-solaar.github.io/Solaar/
 BuildRequires:	python3-dbus
 BuildRequires:	python3-modules
 BuildRequires:	python3-pygobject3
