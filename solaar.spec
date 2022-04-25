@@ -8,13 +8,13 @@ Group:		Applications/System
 Source0:	https://github.com/pwr-Solaar/Solaar/archive/refs/tags/%{version}.tar.gz
 # Source0-md5:	03f1c123c4506c48802da93e94f0f509
 URL:		https://pwr-solaar.github.io/Solaar/
+BuildRequires:	gettext-tools
 BuildRequires:	python3-dbus
 BuildRequires:	python3-modules
 BuildRequires:	python3-pygobject3
 BuildRequires:	python3-pyudev
 BuildRequires:	python3-setuptools
 BuildRequires:	rpm-pythonprov
-BuildRequires:	gettext-tools
 BuildRequires:	rpmbuild(macros) >= 2.000
 Requires:	python3-dbus
 Requires:	python3-modules
