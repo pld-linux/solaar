@@ -1,12 +1,12 @@
 Summary:	Linux devices manager for the Logitech Unifying Receiver
 Summary(pl.UTF-8):	Linuksowy menedżer urządzeń dedykowany zunifikowanym odbiornikom firmy Logitech
 Name:		solaar
-Version:	1.1.9
+Version:	1.1.11
 Release:	1
 License:	GPL v2
 Group:		Applications/System
 Source0:	https://github.com/pwr-Solaar/Solaar/archive/refs/tags/%{version}.tar.gz
-# Source0-md5:	b72d19e72c3dab585a8c84f40f2b2c4f
+# Source0-md5:	00c5238277ef60d8a091ba28f3220b9e
 URL:		https://pwr-solaar.github.io/Solaar/
 BuildRequires:	gettext-tools
 BuildRequires:	python3-dbus
@@ -65,9 +65,8 @@ install -d $RPM_BUILD_ROOT/lib/udev/rules.d
 ln -sr $RPM_BUILD_ROOT%{_bindir}/{%{name},%{name}-cli}
 install -pm755 tools/hidconsole $RPM_BUILD_ROOT%{_bindir}
 install -pm644 share/autostart/solaar.desktop $RPM_BUILD_ROOT/etc/xdg/autostart/
-%{__mv} $RPM_BUILD_ROOT%{_datadir}/solaar/udev-rules.d/42-logitech-unify-permissions.rules $RPM_BUILD_ROOT/lib/udev/rules.d/
-%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/solaar/udev-rules.d
-#%{__rm} -r $RPM_BUILD_ROOT%{_localedir}/rs
+%{__mv} $RPM_BUILD_ROOT%{_prefix}/lib/udev/rules.d/42-logitech-unify-permissions.rules $RPM_BUILD_ROOT/lib/udev/rules.d/
+%{__rm} -r $RPM_BUILD_ROOT%{_prefix}/lib/udev/rules.d
 %find_lang %{name}
 
 %clean
@@ -116,8 +115,17 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitescriptdir}/solaar/ui/__pycache__/*.pyc
 %{py3_sitescriptdir}/solaar/version
 %{py3_sitescriptdir}/solaar-%{version}-py%{py3_ver}.egg-info
-%{_datadir}/%{name}
 %{_desktopdir}/solaar.desktop
 %{_iconsdir}/hicolor/scalable/apps/solaar.svg
 %{_datadir}/metainfo/io.github.pwr_solaar.solaar.metainfo.xml
 /lib/udev/rules.d/42-logitech-unify-permissions.rules
+%{_iconsdir}/hicolor/32x32/apps/solaar-light_000.png
+%{_iconsdir}/hicolor/32x32/apps/solaar-light_020.png
+%{_iconsdir}/hicolor/32x32/apps/solaar-light_040.png
+%{_iconsdir}/hicolor/32x32/apps/solaar-light_060.png
+%{_iconsdir}/hicolor/32x32/apps/solaar-light_080.png
+%{_iconsdir}/hicolor/32x32/apps/solaar-light_100.png
+%{_iconsdir}/hicolor/32x32/apps/solaar-light_unknown.png
+%{_iconsdir}/hicolor/scalable/apps/solaar-attention.svg
+%{_iconsdir}/hicolor/scalable/apps/solaar-init.svg
+%{_iconsdir}/hicolor/scalable/apps/solaar-symbolic.svg
