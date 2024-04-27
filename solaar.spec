@@ -1,12 +1,12 @@
 Summary:	Linux devices manager for the Logitech Unifying Receiver
 Summary(pl.UTF-8):	Linuksowy menedżer urządzeń dedykowany zunifikowanym odbiornikom firmy Logitech
 Name:		solaar
-Version:	1.1.11
+Version:	1.1.12
 Release:	1
 License:	GPL v2
 Group:		Applications/System
 Source0:	https://github.com/pwr-Solaar/Solaar/archive/refs/tags/%{version}.tar.gz
-# Source0-md5:	00c5238277ef60d8a091ba28f3220b9e
+# Source0-md5:	587450bdca02f0b43982b1d642d88181
 URL:		https://pwr-solaar.github.io/Solaar/
 BuildRequires:	gettext-tools
 BuildRequires:	python3-dbus
@@ -84,7 +84,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc ChangeLog.md docs/*
+%doc CHANGELOG.md docs
 %attr(755,root,root) %{_bindir}/hidconsole
 %attr(755,root,root) %{_bindir}/solaar
 %attr(755,root,root) %{_bindir}/solaar-cli
@@ -93,6 +93,11 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitescriptdir}/hidapi/*.py
 %dir %{py3_sitescriptdir}/hidapi/__pycache__
 %{py3_sitescriptdir}/hidapi/__pycache__/*.pyc
+%dir %{py3_sitescriptdir}/hid_parser
+%{py3_sitescriptdir}/hid_parser/__init__.py
+%{py3_sitescriptdir}/hid_parser/data.py
+%dir %{py3_sitescriptdir}/hid_parser/__pycache__
+%{py3_sitescriptdir}/hid_parser/__pycache__/*.pyc
 %dir %{py3_sitescriptdir}/keysyms
 %{py3_sitescriptdir}/keysyms/*.py
 %dir %{py3_sitescriptdir}/keysyms/__pycache__
