@@ -1,12 +1,12 @@
 Summary:	Linux devices manager for the Logitech Unifying Receiver
 Summary(pl.UTF-8):	Linuksowy menedżer urządzeń dedykowany zunifikowanym odbiornikom firmy Logitech
 Name:		solaar
-Version:	1.1.13
+Version:	1.1.14
 Release:	1
 License:	GPL v2
 Group:		Applications/System
 Source0:	https://github.com/pwr-Solaar/Solaar/archive/refs/tags/%{version}.tar.gz
-# Source0-md5:	d58ab43be11e7401db74dfe270e4849f
+# Source0-md5:	00c6f961fa926297e96f6a525aa877e9
 URL:		https://pwr-solaar.github.io/Solaar/
 BuildRequires:	gettext-tools
 BuildRequires:	python3-dbus
@@ -120,6 +120,7 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitescriptdir}/solaar/ui/__pycache__/*.pyc
 %{py3_sitescriptdir}/solaar/version
 %{py3_sitescriptdir}/solaar-%{version}-py%{py3_ver}.egg-info
+%{py3_sitescriptdir}/solaar/ui/about
 %{_desktopdir}/solaar.desktop
 %{_iconsdir}/hicolor/scalable/apps/solaar.svg
 %{_datadir}/metainfo/io.github.pwr_solaar.solaar.metainfo.xml
