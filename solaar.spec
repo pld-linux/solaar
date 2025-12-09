@@ -1,12 +1,12 @@
 Summary:	Linux devices manager for the Logitech Unifying Receiver
 Summary(pl.UTF-8):	Linuksowy menedżer urządzeń dedykowany zunifikowanym odbiornikom firmy Logitech
 Name:		solaar
-Version:	1.1.16
+Version:	1.1.17
 Release:	1
 License:	GPL v2
 Group:		Applications/System
 Source0:	https://github.com/pwr-Solaar/Solaar/archive/refs/tags/%{version}.tar.gz
-# Source0-md5:	812b82c03826539e0159b7973212507b
+# Source0-md5:	981351ddfb60b1fc65191cd0314ba87c
 URL:		https://pwr-solaar.github.io/Solaar/
 BuildRequires:	gettext-tools
 BuildRequires:	python3-dbus
@@ -125,13 +125,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/scalable/apps/solaar.svg
 %{_datadir}/metainfo/io.github.pwr_solaar.solaar.metainfo.xml
 /lib/udev/rules.d/42-logitech-unify-permissions.rules
-%{_iconsdir}/hicolor/32x32/apps/solaar-light_000.png
-%{_iconsdir}/hicolor/32x32/apps/solaar-light_020.png
-%{_iconsdir}/hicolor/32x32/apps/solaar-light_040.png
-%{_iconsdir}/hicolor/32x32/apps/solaar-light_060.png
-%{_iconsdir}/hicolor/32x32/apps/solaar-light_080.png
-%{_iconsdir}/hicolor/32x32/apps/solaar-light_100.png
-%{_iconsdir}/hicolor/32x32/apps/solaar-light_unknown.png
-%{_iconsdir}/hicolor/scalable/apps/solaar-attention.svg
-%{_iconsdir}/hicolor/scalable/apps/solaar-init.svg
-%{_iconsdir}/hicolor/scalable/apps/solaar-symbolic.svg
+%{_iconsdir}/hicolor/32x32/apps/solaar-light_*.png
+%{_iconsdir}/hicolor/scalable/apps/solaar-*.svg
+
