@@ -1,12 +1,12 @@
 Summary:	Linux devices manager for the Logitech Unifying Receiver
 Summary(pl.UTF-8):	Linuksowy menedżer urządzeń dedykowany zunifikowanym odbiornikom firmy Logitech
 Name:		solaar
-Version:	1.1.19
+Version:	1.1.20
 Release:	1
 License:	GPL v2
 Group:		Applications/System
 Source0:	https://github.com/pwr-Solaar/Solaar/archive/refs/tags/%{version}.tar.gz
-# Source0-md5:	a084a6a7930846751b6733d1b4533e96
+# Source0-md5:	18708bef44557074eb09f72c917bc4f6
 URL:		https://pwr-solaar.github.io/Solaar/
 BuildRequires:	gettext-tools
 BuildRequires:	python3-dbus
@@ -118,6 +118,14 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitescriptdir}/solaar/ui/*.py
 %dir %{py3_sitescriptdir}/solaar/ui/__pycache__
 %{py3_sitescriptdir}/solaar/ui/__pycache__/*.pyc
+%dir %{py3_sitescriptdir}/solaar/ui/perkey
+%{py3_sitescriptdir}/solaar/ui/perkey/*.py
+%dir %{py3_sitescriptdir}/solaar/ui/perkey/__pycache__
+%{py3_sitescriptdir}/solaar/ui/perkey/__pycache__/*.pyc
+%dir %{py3_sitescriptdir}/solaar/ui/perkey/layouts
+%{py3_sitescriptdir}/solaar/ui/perkey/layouts/*.py
+%dir %{py3_sitescriptdir}/solaar/ui/perkey/layouts/__pycache__
+%{py3_sitescriptdir}/solaar/ui/perkey/layouts/__pycache__/*.pyc
 %{py3_sitescriptdir}/solaar/version
 %{py3_sitescriptdir}/solaar-%{version}-py%{py3_ver}.egg-info
 %{py3_sitescriptdir}/solaar/ui/about
